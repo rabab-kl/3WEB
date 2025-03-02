@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoviesOcean</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous"  />
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">MoviesOcean</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#movies">Movies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+
+
+
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Connexion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="loginUser" class="form-label">UserName</label>
+                                <input type="text" class="form-control" id="loginUser" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="loginPassword" required>
+                            </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">OK</button>
+                    </div>
+                    <hr>
+                    <p class="text-center">You Don't have an account ?</p>
+                    <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#registerModal">Créer un compte</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">Create an account</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="registerName" class="form-label">Name</label>
+
+                                <input type="text" class="form-control" id="registerName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerEmail" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="registerEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="registerPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="terms" class="form-label">Conditions générales d'utilisation</label>
+                                <select class="form-select" id="terms" required>
+                <option value="" selected disabled>Veuillez accepter les conditions</option>
+                <option value="accept">J'accepte</option>
+              </select>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-success">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social-bar hidden">
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon instagram">
+                <i class="fab fa-instagram"></i>
+                <div class="instagram-slide" id="instagram-slide"> </div>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" class="social-icon facebook">
+                <i class="fab fa-facebook"></i>
+                <div class="facebook-slide" id="facebook-slide"> </div>
+            </a>
+            <a href="https://mail.google.com/mail/" class="social-icon email" target="_blank">
+                <i class="fas fa-envelope"></i>
+                <div class="mail-slide" id="mail-slide"> </div>
+            </a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container text-center text-white">
+            <h1 class="display-4">LATEST ONLINE MOVIES</h1>
+            <p>In Space No One Can Hear Your Scream</p>
+            <a href="#" class="btn btn-danger">Watch Trailer</a>
+        </div>
+    </header>
+
+    <section id="movies" class="movies container py-5">
+        <h2 class="text-center">Featured Movies</h2>
+        <div class="row">
+            <div class="container text-center my-4">
+                <button class="filter-btn btn btn-outline-light" data-genre="all">All</button>
+                <button class="filter-btn btn btn-outline-light" data-genre="Action">Action</button>
+                <button class="filter-btn btn btn-outline-light" data-genre="Romance">Romantic</button>
+            </div>
+
+
+            <div class="col-md-2 mb-2 movie-item" data-genre="Action">
+                <div class="movie-card">
+                    <div class="movie-front">
+                        <img src="images/12.jpg" class="img-fluid" alt="12">
+                    </div>
+                    <div class="movie-back">
+                        <h5>12</h5>
+                        <p><strong>Année :</strong> 2010</p>
+                        <p>Un drame captivant sur la justice et la vérité.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 movie-item" data-genre="Action">
+                <div class="movie-card">
+                    <div class="movie-front">
+                        <img src="images/Back in Black.jpg" class="img-fluid" alt="Back in Black">
+                    </div>
+                    <div class="movie-back">
+                        <h5>Back in Black</h5>
+                        <p><strong>Année :</strong> 2002</p>
+                        <p>Amy Winehouse is raised in a Jewish family and she loves music</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 movie-item">
+                <div class="movie-card" data-genre="Action">
+                    <div class="movie-front">
+                        <img src="images/astarisborn.jpg" class="img-fluid" alt="astarisborn">
+                    </div>
+                    <div class="movie-back">
+                        <h5>A Star Is Born</h5>
+                        <p><strong>Année :</strong> 2022</p>
+                        <p>A hard-drinking country music star falls in love with a singer whose career quickly takes off</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 movie-item" data-genre="Action">
+                <div class="movie-card">
+                    <div class="movie-front">
+                        <img src="images/Hostel.jpg" class="img-fluid" alt="Hostel">
+                    </div>
+                    <div class="movie-back">
+                        <h5>Hostel</h5>
+                        <p><strong>Année :</strong> 2005</p>
+                        <p>Three backpackers head to a Slovak city that promises to meet their hedonistic expectations, with no idea of the hell that awaits them</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 movie-item" data-genre="Action">
+                <div class="movie-card">
+                    <div class="movie-front">
+                        <img src="images/Inception.jpg" class="img-fluid" alt="Inception">
+                    </div>
+                    <div class="movie-back">
+                        <h5>Inception</h5>
+                        <p><strong>Année :</strong> 2010</p>
+                        <p>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 movie-item" data-genre="Romance">
+                <div class="movie-card">
+                    <div class="movie-front">
+                        <img src="images/Barbie.jpg" class="img-fluid" alt="Barbie">
+                    </div>
+                    <div class="movie-back">
+                        <h5>Barbie</h5>
+                        <p><strong>Année :</strong> 2023</p>
+                        <p>Barbie and Ken are having the time of their lives . However,they soon discover the joys and perils of living among regular humans..</p>
+                    </div>
+                </div>
+            </div>
+            <div class="extra-movies" style="display: none;">
+                <div class="col-md-2 mb-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/avengers_endgame.jpg" class="img-fluid" alt="avengers_endgame">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Avengers End Game</h5>
+                            <p><strong>Année :</strong> 2019</p>
+
+                            <p>he Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Romance">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/fiftyshades.jpg" class="img-fluid" alt="fiftyshades">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Fifty Shades</h5>
+                            <p><strong>Année :</strong> 2015</p>
+                            <p>Literature student Anastasia's life changes forever when she meets handsome, yet tormented, billionaire Christian Grey</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Romance">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/it-ends-with-us.jpg" class="img-fluid" alt="it-ends-with-us">
+                        </div>
+                        <div class="movie-back">
+                            <h5>It Ends With Us</h5>
+                            <p><strong>Année :</strong> 2024</p>
+                            <p>When a woman's first love suddenly reenters her life, her relationship with a charming, but abusive neurosurgeon is upended</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Romance">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/wicked.webp" class="img-fluid" alt="wicked">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Wicked</h5>
+                            <p><strong>Année :</strong> 2024</p>
+                            <p>Elphaba, a young woman ridiculed for her green skin, and Galinda, a popular girl, become friends at Shiz University in the Land of Oz</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/xmen.jpg" class="img-fluid" alt="xmen">
+                        </div>
+                        <div class="movie-back">
+                            <h5>XMen</h5>
+                            <p><strong>Année :</strong> 2000</p>
+
+                            <p>In a world where mutants exist and are discriminated against, two groups form for an inevitable clash</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/Zoolander.jpg" class="img-fluid" alt="Zoolander">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Zoolander</h5>
+                            <p><strong>Année :</strong> 2001</p>
+
+                            <p>At the end of his career, a clueless fashion model is brainwashed to kill the Prime Minister of Malaysia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/What we do in shadows.jpg" class="img-fluid" alt="What we do in shadows">
+                        </div>
+                        <div class="movie-back">
+                            <h5>What we do in shadows</h5>
+                            <p><strong>Année :</strong> 2014</p>
+
+                            <p>Viago, Deacon, and Vladislav are vampires who are struggling with the mundane aspects of modern life</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/thematrix.jpg" class="img-fluid" alt="thematrix">
+                        </div>
+                        <div class="movie-back">
+                            <h5>The Matrix</h5>
+                            <p><strong>Année :</strong> 1999</p>
+
+                            <p>When a beautiful stranger leads computer hacker Neo to a forbidding underworld</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/thedarkknight.jpg" class="img-fluid" alt="thedarkknight">
+                        </div>
+                        <div class="movie-back">
+                            <h5>The Dark Knight</h5>
+                            <p><strong>Année :</strong> 2008</p>
+
+                            <p>When a menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman, James and Harvey Dent must work together to put an end to the madness.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/Swiss Army Man.jpg" class="img-fluid" alt="Swiss Army Man">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Swiss Army Man</h5>
+                            <p><strong>Année :</strong> 2011</p>
+
+                            <p>Un film inspirant sur l'amitié et la résilience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/spiderman.jpg" class="img-fluid" alt="spiderman">
+                        </div>
+                        <div class="movie-back">
+                            <h5>The Amazing Spiderman</h5>
+                            <p><strong>Année :</strong> 2011</p>
+
+                            <p>Un film inspirant sur l'amitié et la résilience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Romance">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/shutter island.jpg" class="img-fluid" alt="shutter island">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Shutter Island</h5>
+                            <p><strong>Année :</strong> 2011</p>
+
+                            <p>Un film inspirant sur l'amitié et la résilience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="comedy">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/BadBoys.webp" class="img-fluid" alt="BadBoys">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Bad Boys</h5>
+                            <p><strong>Année :</strong> 2011</p>
+                            <p>Un film inspirant sur l'amitié et la résilience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/Seven.jpg" class="img-fluid" alt="Seven">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Seven</h5>
+                            <p><strong>Année :</strong> 2011</p>
+
+                            <p>Un film inspirant sur l'amitié et la résilience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Action">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/Seigneur des Aanneaux.jpg" class="img-fluid" alt="Seigneur des Aanneaux">
+                        </div>
+                        <div class="movie-back">
+                            <h5>The Lord Of The Rings</h5>
+                            <p><strong>Année :</strong> 2011</p>
+
+                            <p>Un film inspirant sur l'amitié et la résilience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="comedy">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/the_mask.jpg" class="img-fluid" alt="the_mask">
+                        </div>
+                        <div class="movie-back">
+                            <h5>The Mask</h5>
+                            <p><strong>Année :</strong> 2011</p>
+
+                            <p>Un film inspirant sur l'amitié et la résilience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item" data-genre="Comedy">
+                    <div class="movie-card">
+                        <div class="movie-front">
+                            <img src="images/Shaolin Soccer.jpg" class="img-fluid" alt="Shaolin Soccer">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Shaolin Soccer</h5>
+                            <p><strong>Année :</strong> 2001</p>
+                            <p>In this hysterical, eye-popping comedy, a team of misfits take their best shot at winning a championship by mixing martial arts with soccer. Using unorthodox game play, they face the dreaded Team Evil in the ultimate battle
+                                for the title.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 movie-item">
+                    <div class="movie-card" data-genre="comedy">
+                        <div class="movie-front">
+                            <img src="images/Deadpool and wolverine.jpg" class="img-fluid" alt="Deadpool and wolverine">
+                        </div>
+                        <div class="movie-back">
+                            <h5>Deadpool and wolverine</h5>
+                            <p><strong>Année :</strong> 2024</p>
+                            <p>In this multiverse story Deadpool kidnaps another version of Wolverine to replace but this only results in Paradox banishing both Deadpool and Wolverine.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button id="see-more-btn" class="btn btn-primary">See More</button>
+        </div>
+    </section>
+
+
+    <section id="shop-movie" class="container py-8">
+        <h2 class="text-center">Shop Movie</h2>
+
+        <div class="movie-slider-container">
+            <button class="slider-btn left-btn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+            <div class="movie-slider">
+                <div class="movie-slide">
+                    <img src="images/Inception.jpg" alt="Inception">
+                    <p>Inception - $12.99</p>
+                </div>
+                <div class="movie-slide">
+                    <img src="images/Deadpool and wolverine.jpg" alt="Deadpool and Wolverine">
+                    <p>Deadpool and Wolverine - $14.99</p>
+                </div>
+                <div class="movie-slide">
+                    <img src="images/thedarkknight.jpg" alt="thedarkknight">
+                    <p>The Dark Knight - $10.99</p>
+                </div>
+                <div class="movie-slide">
+                    <img src="images/wicked.webp" alt="wicked">
+                    <p>Wicked - $15.99</p>
+                </div>
+                <div class="movie-slide">
+                    <img src="images/Barbie.jpg" alt="Barbie">
+                    <p>Barbie - $9.99</p>
+                </div>
+                <div class="movie-slide">
+                    <img src="images/the_mask.jpg" alt="the_mask">
+                    <p>The Mask - $10.99</p>
+                </div>
+                <div class="movie-slide">
+                    <img src="images/Seigneur des Aanneaux.jpg" alt="Seigneur des Aanneaux">
+                    <p>The Lord of the Rings - $19.99</p>
+                </div>
+                <div class="movie-slide">
+                    <img src="images/Fall.jpg" alt="Fall">
+                    <p>Fall - $9.99</p>
+                </div>
+                <div class="movie-slide">
+                    <img src="images/Seven.jpg" alt="Seven">
+                    <p>Seven - $9.99</p>
+                </div>
+                <div class="movie-slide">
+                    <img src="images/BadBoys.webp" alt="BadBoys">
+                    <p>BadBoys - $9.99</p>
+                </div>
+            </div>
+            <button class="slider-btn right-btn">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        </div>
+    </section>
+
+    <section id="contact" class="contact container py-5">
+        <h2 class="text-center">Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Full Name" class="form-control mb-2">
+            <input type="email" placeholder="Email" class="form-control mb-2">
+            <textarea placeholder="Message" class="form-control mb-2"></textarea>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+    </section>
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Message envoyé !</h3>
+            <p><strong>Nom:</strong> <span id="popupName"></span></p>
+            <p><strong>Email:</strong> <span id="popupEmail"></span></p>
+            <p><strong>Message:</strong> <span id="popupMessage"></span></p>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

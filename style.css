@@ -1,0 +1,362 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    box-shadow: 0 4px 6px rgba(230, 112, 112, 0.705);
+}
+
+.hero {
+    background: url('images/xmen.jpg') no-repeat center center/cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero .container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/* le flip et details de film */
+
+.movies {
+    padding: 50px 0;
+}
+
+.movies h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.movie-card {
+    width: 100%;
+    height: 300px;
+    perspective: 1000px;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.movie-front,
+.movie-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.movie-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.movie-back {
+    background: #222;
+    color: white;
+    padding: 15px;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.movie-card.flipped .movie-front {
+    transform: rotateY(180deg);
+}
+
+.movie-card.flipped .movie-back {
+    transform: rotateY(0deg);
+}
+
+
+/* See more */
+
+#see-more-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#see-more-btn:hover {
+    background-color: #b52a38;
+}
+
+.extra-movies {
+    display: none;
+    flex-wrap: wrap;
+}
+
+footer {
+    margin-top: 20px;
+    background-color: #222;
+    padding: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .movie-card {
+        height: 250px;
+    }
+    .hero {
+        height: 300px;
+    }
+    .movies h2 {
+        font-size: 1.8rem;
+    }
+    #see-more-btn {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+}
+
+
+/* go above */
+
+.filter-btn {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-btn:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.filter-btn:focus {
+    background-color: #b52a38;
+    color: white;
+}
+
+.footer-btn {
+    background-color: #ff9898;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}
+
+.footer-btn:hover {
+    background-color: #ff9898;
+}
+
+@media (max-width: 768px) {
+    .footer-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+
+/* réseaux sociaux */
+
+.social-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.social-bar.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+}
+
+.instagram {
+    background: #e4405f;
+}
+
+.facebook {
+    background: #3b5998;
+}
+
+.email {
+    background: #d44638;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+
+/* shop movies */
+
+.movie-slider-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    margin: auto;
+}
+
+.movie-slider {
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.movie-slide {
+    min-width: 200px;
+    max-width: 200px;
+    text-align: center;
+    background: #222;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    flex: 0 0 auto;
+}
+
+.movie-slide img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+.slider-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.movie-slider::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .movie-slide {
+        min-width: 150px;
+        max-width: 150px;
+    }
+    .slider-btn {
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+}
+
+
+/* ici login/register */
+
+.modal-content {
+    background: #222;
+    color: white;
+    border-radius: 8px;
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-body input {
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+.modal-body input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.modal-body a {
+    color: #dc3545;
+}
+
+.modal-body a:hover {
+    text-decoration: underline;
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+#loginBtn,
+#registerBtn {
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+#loginBtn:hover,
+#registerBtn:hover {
+    background: #b52a38;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        margin: auto;
+    }
+}
